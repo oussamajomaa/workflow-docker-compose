@@ -4,7 +4,7 @@ export default function App() {
   const [msg, setMsg] = useState("...");
 
   useEffect(() => {
-    fetch("/api/hello")
+    fetch("/wf/hello")
       .then((r) => r.json())
       .then((d) => setMsg(d.message))
       .catch(() => setMsg("Erreur API"));
