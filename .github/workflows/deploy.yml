@@ -22,5 +22,5 @@ jobs:
             fi
             cd "${{ secrets.VPS_PATH }}"
             git fetch --all
-            git reset --hard origin/main
+            git reset --hard origin/master
             docker compose up -d --build
