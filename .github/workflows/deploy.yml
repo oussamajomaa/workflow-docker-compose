@@ -22,5 +22,11 @@ jobs:
             fi
             cd "${{ secrets.VPS_PATH }}"
             git fetch --all
-            git reset --hard origin/master
+            # détecte la branche par défaut (main/master/...)
+            DEFAULT_BRANCH="$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@')"
+            echo "Default branch is: ${DEFAULT_BRANCH}"
+
+            git reset --hard "origin/${DEFAULT_BRANCH}"
+
             docker compose up -d --build
+            docker compose ps
